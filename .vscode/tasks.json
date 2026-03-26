@@ -1,18 +1,40 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "build",
-			"type": "shell",
-			"command": "g++",
-			"args": [
-				"Abstraction.cpp",
-				"-o",
-				"Abstraction.exe"
-			],
-			"isBackground": false,
-			"problemMatcher": [],
-			"group": "build"
-		}
-	]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "g++: build active cpp",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileBasenameNoExtension}.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "g++: build all cpp in workspace",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "${workspaceFolder}/*.cpp",
+                "-o",
+                "${workspaceFolder}/all_cpp.exe"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": ["$gcc"]
+        }
+    ]
 }
